@@ -10,16 +10,18 @@ class testGui(QMainWindow):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        # self.setWindowIcon(QtGui.QIcon(path of the icon))
+        self.setWindowIcon(QtGui.QIcon('./gui/visual/logo.png'))
         self.ui.btnHand.setStyleSheet("border-image: url(./gui/visual/HG.png);")
         self.ui.btnFace.setStyleSheet("border-image: url(./gui/visual/FR.png);")
         self.ui.btnHand.clicked.connect(self.startHand)
         self.ui.btnFace.clicked.connect(self.startFace)
 
     def startHand(self):
+        print('Starting Hand Gestures Recognizer')
         os.system('python ./gui/handHandler.py')
         
     def startFace(self):
+        print('Starting Face Recognizer')
         os.system('python ./gui/faceHandler.py')
     
 if __name__ == '__main__':
@@ -28,3 +30,4 @@ if __name__ == '__main__':
     GUI.setStyleSheet("border-image: url(./gui/visual/fondo.jpeg);")
     GUI.show()
     sys.exit(app.exec_())
+    

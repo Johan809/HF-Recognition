@@ -195,9 +195,6 @@ class MainWindow(QWidget):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-
-    # create and show mainWindow
     mainWindow = MainWindow()
     mainWindow.show()
-
     sys.exit(app.exec_())

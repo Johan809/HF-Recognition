@@ -75,7 +75,7 @@ class MainWindow(QWidget):
         #loop the faces in images
         for(top, right, bottom, left), face_encode in zip(face_location, face_encode):
             matches = faces.compare_faces(know_encode, face_encode)
-            name = "Unknown Person"
+            name = "Unknown"
 
             if True in matches:
                 first_match_index = matches.index(True)
@@ -96,6 +96,7 @@ class MainWindow(QWidget):
 
         #show image
         pathTmpImg = '.\scannedImages\TEMP_Img.PNG'
+        print('Image processed, now showing it')
         pil_img.save(pathTmpImg)
         os.system(pathTmpImg)
 
