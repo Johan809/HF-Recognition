@@ -3,7 +3,7 @@ import sys
 
 # import some PyQt5 modules
 from PyQt5.QtWidgets import QApplication, QWidget
-from PyQt5.QtGui import QImage, QPixmap
+from PyQt5.QtGui import QImage, QPixmap, QColor
 from PyQt5.QtCore import QTimer
 
 # import Opencv modules
@@ -30,7 +30,7 @@ class MainWindow(QWidget):
 
     def getHandRec(self):
         self.cap = cv2.VideoCapture(0)
-        while(1):
+        while self.flowControl:
             #an error comes if it does not find anything in window as it cannot find contour of max area
             #therefore this try error statement
             try:  
@@ -153,7 +153,7 @@ class MainWindow(QWidget):
                     cv2.putText(frame,'reposition',(10,50), font, 2, (0,0,255), 3, cv2.LINE_AA)
                     
                 #show the windows
-                cv2.imshow('mask',mask)
+                #cv2.imshow('mask',mask)
                 #cv2.imshow('frame',frame)
                 # convert image to RGB format
                 frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -168,11 +168,9 @@ class MainWindow(QWidget):
             except:
                 pass
                 
-        # Hit 'q' on the keyboard to quit!
+            # Hit 'q' on the keyboard to quit!
             if cv2.waitKey(1) & 0xFF == ord('q'):
-                cv2.destroyAllWindows()
-                cap.release()
-                break
+                break 
 
     # start/stop timer
     def controlTimer(self):
@@ -182,12 +180,14 @@ class MainWindow(QWidget):
             self.cap = cv2.VideoCapture(0)
             # start timer
             self.timer.start(20)
+            self.flowControl = True
             # update control_bt text
             self.ui.control_bt.setText("Stop")
         # if timer is started
         else:
             # stop timer
             self.timer.stop()
+            self.flowControl = False
             # release video capture
             self.cap.release()
             # update control_bt text
@@ -201,5 +201,3 @@ if __name__ == '__main__':
     mainWindow.show()
 
     sys.exit(app.exec_())
-    cv2.destroyAllWindows()
-    cap.release()

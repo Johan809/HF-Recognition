@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Face Recognition</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(27, 38, 44);</string>
+  </property>
   <widget class="QPushButton" name="btnImage">
    <property name="geometry">
     <rect>
@@ -21,6 +24,9 @@
      <width>81</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>Scan Image</string>
@@ -47,6 +53,9 @@
      <width>81</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>Scan Webcam</string>

@@ -15,8 +15,10 @@ class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(691, 512)
+        Form.setStyleSheet("background-color: rgb(27, 38, 44);")
         self.btnImage = QtWidgets.QPushButton(Form)
         self.btnImage.setGeometry(QtCore.QRect(590, 460, 81, 31))
+        self.btnImage.setStyleSheet("color: rgb(255, 255, 255);")
         self.btnImage.setObjectName("btnImage")
         self.lbl_tempImg = QtWidgets.QLabel(Form)
         self.lbl_tempImg.setGeometry(QtCore.QRect(20, 10, 641, 431))
@@ -24,6 +26,7 @@ class Ui_Form(object):
         self.lbl_tempImg.setObjectName("lbl_tempImg")
         self.btnWebcam = QtWidgets.QPushButton(Form)
         self.btnWebcam.setGeometry(QtCore.QRect(20, 460, 81, 31))
+        self.btnWebcam.setStyleSheet("color: rgb(255, 255, 255);")
         self.btnWebcam.setObjectName("btnWebcam")
 
         self.retranslateUi(Form)

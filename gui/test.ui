@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>417</width>
-    <height>127</height>
+    <width>799</width>
+    <height>555</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>799</width>
+    <height>555</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>799</width>
+    <height>555</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>HF Recognition</string>
@@ -19,6 +31,9 @@
   <property name="accessibleDescription">
    <string/>
   </property>
+  <property name="styleSheet">
+   <string notr="true">border-image: url(./visual/fondo.jpeg);</string>
+  </property>
   <property name="unifiedTitleAndToolBarOnMac">
    <bool>false</bool>
   </property>
@@ -26,32 +41,39 @@
    <widget class="QPushButton" name="btnHand">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>60</y>
-      <width>81</width>
-      <height>31</height>
+      <x>420</x>
+      <y>340</y>
+      <width>191</width>
+      <height>111</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(./visual/HG.png);</string>
+    </property>
     <property name="text">
-     <string>Hand Gesture</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="btnFace">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>60</y>
-      <width>81</width>
-      <height>31</height>
+      <x>160</x>
+      <y>340</y>
+      <width>191</width>
+      <height>111</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(./visual/FR.png);</string>
+    </property>
     <property name="text">
-     <string>Face Rec</string>
+     <string/>
     </property>
    </widget>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="visual/visual.qrc"/>
+ </resources>
  <connections/>
 </ui>
