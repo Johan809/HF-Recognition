@@ -8,6 +8,10 @@ env/
 # Imágenes generadas por el reconocimiento facial
 scannedImages/
 
+# Fotos personales para el reconocimiento facial (no se publican)
+img/known/Johan Alonzo.jpg
+img/known/Manuel Sanchez.jpeg
+
 # Editores y sistema
 .vscode/
 .idea/
