@@ -72,6 +72,13 @@ QPushButton#link:hover { color: @ACCENT_HOVER; text-decoration: underline; }
 }
 #chip[active="true"] { background: @ACCENT_SOFT; color: @ACCENT; border-color: @ACCENT; }
 
+QPushButton#toggle {
+    background: @SURFACE_ALT; color: @MUTED; border: 1px solid transparent;
+    border-radius: 8px; padding: 4px 10px; font-size: 12px; font-weight: 600;
+}
+QPushButton#toggle:hover { color: @TEXT; }
+QPushButton#toggle:checked { background: @ACCENT_SOFT; color: @ACCENT; border-color: @ACCENT; }
+
 #tag {
     background: @SURFACE_ALT; color: @PEACH; border-radius: 6px; padding: 3px 8px;
     font-size: 12px; font-weight: 600;

@@ -6,10 +6,11 @@ from pathlib import Path
 import cv2
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'gui'))
-from handHandler import recognizeGesture, HandSegmenter
+from handHandler import recognizeGesture, HandSegmenter, GestureSmoother
 
 cap = cv2.VideoCapture(0)
 segmenter = HandSegmenter()
+smoother = GestureSmoother()
 
 while True:
     ret, frame = cap.read()
@@ -18,6 +19,7 @@ while True:
     frame = cv2.flip(frame, 1)
 
     gesture, fingers, mask = recognizeGesture(frame, segmenter)
+    gesture, fingers = smoother.update(gesture, fingers)
     if segmenter.calibrating:
         text = 'Calibrating...'
     else:

@@ -110,6 +110,10 @@ class VideoView(QWidget):
         self.image = rgbToImage(rgb)
         self.update()
 
+    def setImage(self, image):
+        self.image = image
+        self.update()
+
     def clear(self):
         self.image = None
         self.update()
