@@ -1,3 +1,4 @@
 @ECHO OFF
+cd /d "%~dp0"
 python "./gui/start.py"
-PAUSE
+IF ERRORLEVEL 1 PAUSE

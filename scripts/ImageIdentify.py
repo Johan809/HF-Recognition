@@ -1,57 +1,23 @@
-import face_recognition as faces
-from PIL import Image, ImageDraw
-import os
+# Console version of the image face recognizer: python scripts/ImageIdentify.py [image]
+import sys
+from pathlib import Path
 
-#create array of encodings and names
-know_encode = []
+from PIL import Image
 
-know_names = []
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / 'gui'))
+from faceHandler import loadKnownFaces, analyzeImage
 
-#the grasita function
-def readImages():
-    obj = os.scandir('./img/known')
-    for entry in obj:
-        n = entry.name
-        know_names.append(n[:-4])
-        img = faces.load_image_file('./img/known/'+n)
-        i_encode = faces.face_encodings(img)[0]
-        know_encode.append(i_encode)
-        print(n[:-4] + ' proccess')
+known, skipped = loadKnownFaces()
+for name in skipped:
+    print('No face found in ' + name)
 
-readImages()
+# load test image
+path = sys.argv[1] if len(sys.argv) > 1 else ROOT / 'img' / 'groups' / 'vladimir-putin-bashar-al-asad-y-barack-obama-1.jpg'
+result, names, savedPath = analyzeImage(path, known)
 
-#load test image
-test_image1 = faces.load_image_file('./img/groups/vladimir-putin-bashar-al-asad-y-barack-obama-1.jpg')
+print('Faces:', ', '.join(name or 'Unknown' for name in names) or 'none')
+print('Saved in', savedPath)
 
-# find faces in test images
-face_location1 = faces.face_locations(test_image1)
-face_encode1 = faces.face_encodings(test_image1, face_location1)
-
-# convert to PIL format
-pil_image1 = Image.fromarray(test_image1)
-
-#create a draw instance
-draw1 = ImageDraw.Draw(pil_image1)
-
-
-#loop the faces in images
-for(top, right, bottom, left), face_encode1 in zip(face_location1, face_encode1):
-    matches = faces.compare_faces(know_encode, face_encode1)
-    name = "Unknown Person"
-
-    if True in matches:
-        first_match_index = matches.index(True)
-        name = know_names[first_match_index]
-
-    #draw box
-    draw1.rectangle(((left, top), (right, bottom)), outline=(0,0,0))
-
-    #draw label
-    text_width, text_height = draw1.textsize(name)
-    draw1.rectangle(((left, bottom - text_height - 10), (right, bottom)), fill=(0,0,0), outline=(0,0,0))
-    draw1.text((left+6, bottom - text_height - 5), name, fill=(255,255,255,255))
-
-#display image
-pil_image1.show()
-
-del draw1
+# display image
+Image.fromarray(result).show()

@@ -1,0 +1,10 @@
+PySide6-Essentials>=6.8
+opencv-python>=4.8
+numpy>=1.26
+Pillow>=10.1
+# dlib precompilado: evita tener que compilarlo con CMake y Visual Studio
+dlib-bin>=19.24
+face_recognition_models>=0.3.0
+# face_recognition_models todavía usa pkg_resources, que se eliminó en setuptools 81
+setuptools<81
+# face_recognition se instala aparte con --no-deps (ver README), porque pide "dlib" y no "dlib-bin"
